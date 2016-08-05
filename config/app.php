@@ -166,7 +166,7 @@ return [
         GrahamCampbell\Throttle\ThrottleServiceProvider::class,
         Laravolt\SemanticForm\ServiceProvider::class,
         Recca0120\LaravelTracy\ServiceProvider::class,
-        AlfredoRamos\ParsedownExtra\ParsedownExtraServiceProvider::class
+        AlfredoRamos\ParsedownExtra\ParsedownExtraServiceProvider::class,
 
     ],
 
@@ -222,7 +222,7 @@ return [
         'Entrust'      => Zizaco\Entrust\EntrustFacade::class,
         'Throttle'     => GrahamCampbell\Throttle\Facades\Throttle::class,
         'SemanticForm' => Laravolt\SemanticForm\Facade::class,
-        'Markdown'  => AlfredoRamos\ParsedownExtra\Facades\ParsedownExtra::class
+        'Markdown'  => AlfredoRamos\ParsedownExtra\Facades\ParsedownExtra::class,
     ],
 
 ];
