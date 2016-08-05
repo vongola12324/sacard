@@ -9,6 +9,6 @@ use App\Http\Requests;
 class MapController extends Controller
 {
     public function getIndex(){
-
+        return view('map');
     }
 }
