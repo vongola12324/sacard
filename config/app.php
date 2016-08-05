@@ -156,6 +156,18 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Package Providers...
+         */
+        Collective\Html\HtmlServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        GrahamCampbell\Throttle\ThrottleServiceProvider::class,
+        Laravolt\SemanticForm\ServiceProvider::class,
+        Recca0120\LaravelTracy\ServiceProvider::class,
+        AlfredoRamos\ParsedownExtra\ParsedownExtraServiceProvider::class
+
     ],
 
     /*
@@ -202,6 +214,15 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Package Alias...
+         */
+        'Form'         => Collective\Html\FormFacade::class,
+        'Html'         => Collective\Html\HtmlFacade::class,
+        'Entrust'      => Zizaco\Entrust\EntrustFacade::class,
+        'Throttle'     => GrahamCampbell\Throttle\Facades\Throttle::class,
+        'SemanticForm' => Laravolt\SemanticForm\Facade::class,
+        'Markdown'  => AlfredoRamos\ParsedownExtra\Facades\ParsedownExtra::class
     ],
 
 ];
