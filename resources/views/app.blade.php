@@ -41,7 +41,9 @@
         {{-- Footer --}}
         <div class="ui inverted center aligned segment" id="footer">
             <div class="ui container center aligned">
-                <p>Copyright (c) 2016 Feng Chia University Student Association, All rights reserved.</p>
+                <p>
+                    Copyright (c) 2016 Feng Chia University Student Association, All rights reserved.@if(!auth()->check()) [{!! Html::linkRoute('auth.login', 'Staff Login') !!}]@endif
+                </p>
             </div>
         </div>
 
