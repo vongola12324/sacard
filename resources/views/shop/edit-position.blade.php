@@ -21,7 +21,7 @@
                 </div>
                 <div class="field{{ ($errors->has('role'))?' error':'' }}">
                     <label>分店地址</label>
-                    <input type="text" name="address[{{$i}}]" placeholder="例如：台中市北區文華路100號" value="{{ $position->address }}">
+                    <input type="text" name="address[{{$i}}]" placeholder="例如：台中市西屯區文華路100號" value="{{ $position->address }}">
                 </div>
                 <div class="ui tiny red inverted icon button" id="removeFieldButton"><i class="remove icon"></i>刪除分店
                     #{{ $i }}</div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="field{{ ($errors->has('role'))?' error':'' }}">
                     <label>分店地址</label>
-                    <input type="text" name="address[0]" placeholder="例如：台中市北區文華路100號">
+                    <input type="text" name="address[0]" placeholder="例如：台中市西屯區文華路100號">
                 </div>
                 <div class="ui tiny red inverted icon button" id="removeFieldButton"><i class="remove icon"></i>刪除分店
                     #{{ $i }}</div>
@@ -61,7 +61,7 @@
 
             $(add_button).click(function (e) { //on add input button click
                 e.preventDefault();
-                $('<div class="field group" style="margin-bottom: 20px"><h3 class="ui header">分店 #' + i + '</h3><div class="field"><label>分店名稱</label><input type="text" name="description[' + i + ']" placeholder="Ex: 逢甲店"></div><div class="field"><label>分店地址</label><input type="text" name="address[' + i + ']" placeholder="例如：台中市北區文華路100號"></div><div class="ui tiny red inverted icon button" id="removeFieldButton"><i class="remove icon"></i>刪除分店 #' + i + '</div></div>').insertBefore("div#ButtonList");
+                $('<div class="field group" style="margin-bottom: 20px"><h3 class="ui header">分店 #' + i + '</h3><div class="field"><label>分店名稱</label><input type="text" name="description[' + i + ']" placeholder="Ex: 逢甲店"></div><div class="field"><label>分店地址</label><input type="text" name="address[' + i + ']" placeholder="例如：台中市西屯區文華路100號"></div><div class="ui tiny red inverted icon button" id="removeFieldButton"><i class="remove icon"></i>刪除分店 #' + i + '</div></div>').insertBefore("div#ButtonList");
                 $('div#removeFieldButton').bind('click', function (e) {
 //                    console.log($(this).parent('div'));
                     $(this).parent('div').remove();
