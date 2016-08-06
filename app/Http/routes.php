@@ -14,7 +14,7 @@
 Route::get('map', 'MapController@getIndex')->name('map.index');
 
 //會員（須完成信箱驗證）
-Route::group(['middleware' => 'email'], function () {
+Route::group(['middleware' => ['auth', 'email']], function () {
     //會員管理
     //權限：user.manage、user.view
     Route::resource('user', 'UserController', [
@@ -40,8 +40,11 @@ Route::group(['middleware' => 'email'], function () {
         Route::get('edit', 'ProfileController@getEditProfile')->name('profile.edit');
         Route::put('update', 'ProfileController@updateProfile')->name('profile.update');
     });
-    //題目系統
-    Route::resource('position', 'PositionController');
+
+    //店家資料
+    Route::get('shop/{shop}/position', 'ShopController@editPosition')->name('position.edit');
+    Route::post('shop/{shop}/position', 'ShopController@updatePosition')->name('position.update');
+    Route::resource('shop', 'ShopController');
 });
 
 

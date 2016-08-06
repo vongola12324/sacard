@@ -12,6 +12,7 @@ use Zizaco\Entrust\EntrustPermission;
  * @property string name
  * @property string display_name
  * @property string description
+ * @property boolean protection
  *
  * @property \Illuminate\Database\Eloquent\Collection|Role[]|null roles
  *
@@ -25,6 +26,7 @@ class Permission extends EntrustPermission
         'name',
         'display_name',
         'description',
+        'protection',
     ];
 
     /**

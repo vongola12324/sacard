@@ -302,7 +302,7 @@ $.fn.sticky = function(parameters) {
             module.set.containerSize();
             module.set.size();
             module.stick();
-            module.debug('Caching element positions', module.cache);
+            module.debug('Caching element position', module.cache);
           }
         },
 

@@ -167,6 +167,8 @@ return [
         Laravolt\SemanticForm\ServiceProvider::class,
         Recca0120\LaravelTracy\ServiceProvider::class,
         AlfredoRamos\ParsedownExtra\ParsedownExtraServiceProvider::class,
+        Lavary\Menu\ServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
 
     ],
 
@@ -223,6 +225,9 @@ return [
         'Throttle'     => GrahamCampbell\Throttle\Facades\Throttle::class,
         'SemanticForm' => Laravolt\SemanticForm\Facade::class,
         'Markdown'  => AlfredoRamos\ParsedownExtra\Facades\ParsedownExtra::class,
+        'Menu'         => Lavary\Menu\Facade::class,
+        'Gravatar'     => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
+
     ],
 
 ];

@@ -11,15 +11,15 @@
         {{-- CSS --}}
         {!! Html::style('semantic/semantic.min.css') !!}
         <style>
-            body.flex.body {
-                display: flex;
-                min-height: 100vh;
-                flex-direction: column;
-            }
+            {{--body.flex.body {--}}
+                {{--display: flex;--}}
+                {{--min-height: 100vh;--}}
+                {{--flex-direction: column;--}}
+            {{--}--}}
 
-            div.flex.content {
-                flex: 1;
-            }
+            {{--div.flex.content {--}}
+                {{--flex: 1;--}}
+            {{--}--}}
 
             div#footer {
                 margin: 0;
@@ -32,6 +32,9 @@
         @yield('css')
     </head>
     <body class="flex body">
+        {{-- Navbar --}}
+        @yield('navbar')
+
         {{-- Content --}}
         <div class="flex content">
             @yield('content')

@@ -694,7 +694,7 @@ $.fn.popup = function(parameters) {
               nextPosition  = false
             ;
             if(!triedPositions) {
-              module.verbose('All available positions available');
+              module.verbose('All available position available');
               triedPositions = module.get.positions();
             }
 
@@ -943,7 +943,7 @@ $.fn.popup = function(parameters) {
             $module.removeClass(className.visible);
           },
           attempts: function() {
-            module.verbose('Resetting all searched positions');
+            module.verbose('Resetting all searched position');
             searchDepth    = 0;
             triedPositions = false;
           }
@@ -1390,7 +1390,7 @@ $.fn.popup.settings = {
   // offset on aligning axis from calculated position
   offset         : 0,
 
-  // maximum times to look for a position before failing (9 positions total)
+  // maximum times to look for a position before failing (9 position total)
   maxSearchDepth : 15,
 
   error: {
