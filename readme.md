@@ -22,7 +22,8 @@ For Client:
 - Chrome / Firefox is fine.
 
 ## API Used
-- Google MAP API
+- Google MAP API (include Geocoding and Marker)  
+You need TWO KEYS, one for server(Geocoding), another for browser(Map).  
 
 ## License
 This project is open-sourced software licensed under the [MIT License](http://opensource.org/licenses/MIT).
