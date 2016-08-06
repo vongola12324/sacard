@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Position;
 use App\Shop;
 use Carbon\Carbon;
+use App\Services\LocationService;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -131,8 +132,27 @@ class ShopController extends Controller
      *
      * @param Request $request
      * @param Shop $shop
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function updatePosition(Request $request, Shop $shop)
     {
+        // Delete all position belongsTo $shop
+        Position::where('shop_id', $shop->id)->delete();
+
+        // Add all position to $shop
+        $keys = array_keys($request->get('address'));
+        foreach ($keys as $key) {
+            $location = LocationService::getLocation($request->get('address')[$key]);
+            Position::create([
+                'shop_id'     => $shop->id,
+                'description' => $request->get('description')[$key],
+                'address'     => $request->get('address')[$key],
+                'longitude'   => $location[0],
+                'latitude'    => $location[1],
+            ]);
+        }
+
+        return redirect()->route('shop.show', $shop)->with('global', '商店位置已更新');
+
     }
 }

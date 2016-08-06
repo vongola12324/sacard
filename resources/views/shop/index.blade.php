@@ -48,8 +48,8 @@
                         {{ $shop->open_at->format('H:i') }} - {{ $shop->close_at->format('H:i') }}
                     </td>
                     <td class="one wide center aligned">
-                        @if($shop->permissions != [])
-                            <i class="large red marker icon"></i>
+                        @if(count($shop->positions))
+                            <i class="large green marker icon"></i>
                         @else
                             <i class="large red remove icon popup" data-content="這個商家找不到任何位置資訊！"></i>
                         @endif

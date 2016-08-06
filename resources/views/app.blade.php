@@ -31,14 +31,12 @@
         </style>
         @yield('css')
     </head>
-    <body class="flex body">
+    <body>
         {{-- Navbar --}}
         @yield('navbar')
 
         {{-- Content --}}
-        <div class="flex content">
-            @yield('content')
-        </div>
+        @yield('content')
 
         {{-- Footer --}}
         <div class="ui inverted center aligned segment" id="footer">

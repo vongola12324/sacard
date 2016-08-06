@@ -21,7 +21,7 @@ class LaravelMenu
         Menu::make('left', function ($menu) {
             /* @var \Lavary\Menu\Builder $menu */
             $menu->add('首頁', ['route' => 'index']);
-            $menu->add('商家地圖 <i class="external icon"></i>', ['route' => 'map.index'])->active('map/*');
+            $menu->add('商家地圖 <i class="external icon"></i>', ['route' => 'map.index'])->link->attr('target', '_blank');
         });
         //右側
         Menu::make('right', function ($menu) {

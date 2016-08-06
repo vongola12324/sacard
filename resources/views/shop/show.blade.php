@@ -34,25 +34,30 @@
     </table>
     @if(count($shop->positions))
         <h3 class="ui header center aligned">位置</h3>
-        <dl>
+        <div class="ui large relaxed divided list">
             @foreach($shop->positions as $position)
-                <dt>{{ $position->name }}</dt>
-                <dd>{{ $position->address }}</dd>
+                <div class="item" style="margin-left: 45vh">
+                    <i class="large red marker middle aligned icon"></i>
+                    <div class="content">
+                        <p class="header">{{ $position->description }}</p>
+                        <div class="description">{{ $position->address }}</div>
+                    </div>
+                </div>
             @endforeach
-        </dl>
+        </div>
     @endif
 
     {{-- TODO: text-align: center要獨立成一個text-center --}}
     <div style="text-align: center">
         <a href="{{ route('shop.index') }}" class="ui blue inverted icon button"><i class="arrow left icon"></i>
-            會員清單</a>
+            商店清單</a>
         <a href="{{ route('shop.edit', $shop) }}" class="ui brown inverted icon button"><i class="edit icon"></i>
-            編輯資料</a>
+            編輯商店資料</a>
         <a href="{{ route('position.edit', $shop) }}" class="ui brown inverted icon button"><i class="edit icon"></i>
             編輯位置資料</a>
         {!! Form::open(['route' => ['shop.destroy', $shop], 'style' => 'display: inline', 'method' => 'DELETE', 'onSubmit' => "return confirm('確定要刪除此會員嗎？');"]) !!}
         <button type="submit" class="ui icon red inverted button">
-            <i class="trash icon"></i> 刪除會員
+            <i class="trash icon"></i> 刪除商店
         </button>
         {!! Form::close() !!}
     </div>
