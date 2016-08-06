@@ -16,7 +16,7 @@ class CreateModRole extends Migration
         $moderator = Role::create([
             'name'         => 'Moderator',
             'display_name' => '版主',
-            'description'  => '僅擁有商店資訊的管理者'
+            'description'  => '僅擁有商店資訊的管理者',
         ]);
 
         // Give permission to him
@@ -29,7 +29,6 @@ class CreateModRole extends Migration
         $moderator->attachPermission($permMenuView);
         $moderator->attachPermission($permShopManage);
         $moderator->attachPermission($permPositionManage);
-
     }
 
     /**

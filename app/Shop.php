@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * 店家座標
- * @package App
  *
  * @property-read int id
  * @property string name

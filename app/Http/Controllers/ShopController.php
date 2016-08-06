@@ -40,7 +40,7 @@ class ShopController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:shops,name'
+            'name' => 'required|unique:shops,name',
         ]);
 
         $shop = Shop::create([
@@ -53,7 +53,6 @@ class ShopController extends Controller
         ]);
 
         return redirect()->route('shop.index')->with('global', '商店已建立');
-
     }
 
     /**
@@ -88,7 +87,7 @@ class ShopController extends Controller
     public function update(Request $request, Shop $shop)
     {
         $this->validate($request, [
-            'name' => 'required|unique:shops,name,' . $shop->id . ',id'
+            'name' => 'required|unique:shops,name,' . $shop->id . ',id',
         ]);
 
         $shop->update([
@@ -112,6 +111,7 @@ class ShopController extends Controller
     public function destroy(Shop $shop)
     {
         $shop->delete();
+
         return redirect()->route('shop.index')->with('global', '商店已刪除');
     }
 
@@ -132,7 +132,7 @@ class ShopController extends Controller
      * @param Request $request
      * @param Shop $shop
      */
-    public function updatePosition(Request $request, Shop $shop){
-
+    public function updatePosition(Request $request, Shop $shop)
+    {
     }
 }

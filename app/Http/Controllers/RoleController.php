@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Permission;
 use App\Role;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {

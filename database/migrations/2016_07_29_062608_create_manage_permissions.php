@@ -2,7 +2,6 @@
 
 use App\Permission;
 use App\Role;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateManagePermissions extends Migration
@@ -18,7 +17,7 @@ class CreateManagePermissions extends Migration
             'name'         => 'menu.view',
             'display_name' => '顯示管理選單',
             'description'  => '顯示所有網站管理用的選單',
-            'protection'   => true
+            'protection'   => true,
         ]);
 
         $permUserManage = Permission::create([

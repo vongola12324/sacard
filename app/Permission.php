@@ -12,7 +12,7 @@ use Zizaco\Entrust\EntrustPermission;
  * @property string name
  * @property string display_name
  * @property string description
- * @property boolean protection
+ * @property bool protection
  *
  * @property \Illuminate\Database\Eloquent\Collection|Role[]|null roles
  *

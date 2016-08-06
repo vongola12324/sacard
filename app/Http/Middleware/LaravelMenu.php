@@ -61,8 +61,6 @@ class LaravelMenu
                             ['route' => 'log-viewer::dashboard']
                         )->link->attr('target', '_blank');
                     }
-
-
                 }
                 /** @var \Lavary\Menu\Builder $userMenu */
                 $userMenu = $menu->add(auth()->user()->name, 'javascript:void(0)');

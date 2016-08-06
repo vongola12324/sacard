@@ -6,13 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * 店家座標
- * @package App
  *
  * @property-read int id
  * @property int shop_id
  * @property string description
- * @property double longitude
- * @property double latitude
+ * @property float longitude
+ * @property float latitude
  *
  * @property \Carbon\Carbon|null created_at
  * @property \Carbon\Carbon|null updated_at
