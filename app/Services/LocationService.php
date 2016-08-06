@@ -11,7 +11,7 @@ class LocationService
      * @return array|null
      * @throws \HttpRequestException
      */
-    public static function getLocation(string $address) : array
+    public static function getLocation($address)
     {
         if (!env('GOOGLE_API_SERVER_KEY')) {
             throw new \HttpRequestException('Google API Key Not Found!! Make sure that you have set KEY in your .env file.');
