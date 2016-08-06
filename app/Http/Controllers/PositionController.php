@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
-
     /**
      * Store a newly created resource in storage.
      *
