@@ -45,12 +45,12 @@ class ShopController extends Controller
         ]);
 
         $shop = Shop::create([
-            'name'        => $request->get('name'),
+            'name' => $request->get('name'),
             'description' => $request->get('description'),
-            'url'         => $request->get('url'),
-            'tel'         => $request->get('tel'),
-            'open_at'     => Carbon::createFromFormat('H:i', $request->get('open_at')),
-            'close_at'    => Carbon::createFromFormat('H:i', $request->get('close_at')),
+            'url' => $request->get('url'),
+            'tel' => $request->get('tel'),
+            'open_at' => Carbon::createFromFormat('H:i', $request->get('open_at')),
+            'close_at' => Carbon::createFromFormat('H:i', $request->get('close_at')),
         ]);
 
         return redirect()->route('shop.index')->with('global', '商店已建立');
@@ -92,12 +92,12 @@ class ShopController extends Controller
         ]);
 
         $shop->update([
-            'name'        => $request->get('name'),
+            'name' => $request->get('name'),
             'description' => $request->get('description'),
-            'url'         => $request->get('url'),
-            'tel'         => $request->get('tel'),
-            'open_at'     => Carbon::createFromFormat('H:i', $request->get('open_at')),
-            'close_at'    => Carbon::createFromFormat('H:i', $request->get('close_at')),
+            'url' => $request->get('url'),
+            'tel' => $request->get('tel'),
+            'open_at' => Carbon::createFromFormat('H:i', $request->get('open_at')),
+            'close_at' => Carbon::createFromFormat('H:i', $request->get('close_at')),
         ]);
 
         return redirect()->route('shop.index')->with('global', '商店已更新');
@@ -144,15 +144,14 @@ class ShopController extends Controller
         foreach ($keys as $key) {
             $location = LocationService::getLocation($request->get('address')[$key]);
             Position::create([
-                'shop_id'     => $shop->id,
+                'shop_id' => $shop->id,
                 'description' => $request->get('description')[$key],
-                'address'     => $request->get('address')[$key],
-                'longitude'   => $location[0],
-                'latitude'    => $location[1],
+                'address' => $request->get('address')[$key],
+                'longitude' => $location[0],
+                'latitude' => $location[1],
             ]);
         }
 
         return redirect()->route('shop.show', $shop)->with('global', '商店位置已更新');
-
     }
 }

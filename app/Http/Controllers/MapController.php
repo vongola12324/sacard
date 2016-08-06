@@ -11,6 +11,7 @@ class MapController extends Controller
     {
         $shops = Shop::all();
         $positions = Position::all();
+
         return view('map', compact(['shops', 'positions']));
     }
 }
