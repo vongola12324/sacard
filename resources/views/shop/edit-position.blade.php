@@ -15,6 +15,9 @@
         @forelse($shop->positions as $key => $position)
             <div class="field group" style="margin-bottom: 20px">
                 <h3 class="ui header">分店 #{{ $i }}</h3>
+                <div class="field" hidden>
+                    <input type="text" name="posID[{{ $i }}]" value="{{ $position->id }}">
+                </div>
                 <div class="field{{ ($errors->has('role'))?' error':'' }}">
                     <label>分店名稱</label>
                     <input type="text" name="description[{{$i}}]" placeholder="Ex: 逢甲店" value="{{ $position->description }}">
@@ -30,6 +33,9 @@
         @empty
             <div class="field group" style="margin-bottom: 20px">
                 <h3 class="ui header">分店 #0</h3>
+                <div class="field" hidden>
+                    <input type="text" name="posID[0]" value="">
+                </div>
                 <div class="field{{ ($errors->has('role'))?' error':'' }}">
                     <label>分店名稱</label>
                     <input type="text" name="description[0]" placeholder="Ex: 逢甲店">
@@ -60,11 +66,11 @@
         $(document).ready(function () {
             var fieldGroup = $("div.field.group"); //Fields wrapper
             var add_button = $("div#addNewFieldButton"); //Add button ID
-            var i = {{ $i }} +1;
+            var i = {{ $i }};
 
             $(add_button).click(function (e) { //on add input button click
                 e.preventDefault();
-                $('<div class="field group" style="margin-bottom: 20px"><h3 class="ui header">分店 #' + i + '</h3><div class="field"><label>分店名稱</label><input type="text" name="description[' + i + ']" placeholder="Ex: 逢甲店"></div><div class="field"><label>分店地址</label><input type="text" name="address[' + i + ']" placeholder="例如：台中市西屯區文華路100號"></div><div class="ui tiny red inverted icon button" id="removeFieldButton"><i class="remove icon"></i>刪除分店 #' + i + '</div></div>').insertBefore("div#ButtonList");
+                $('<div class="field group" style="margin-bottom: 20px"><h3 class="ui header">分店 #' + i + '</h3><div class="field" hidden><input type="text" name="posID[{{ $i }}]" value=""></div><div class="field"><label>分店名稱</label><input type="text" name="description[' + i + ']" placeholder="Ex: 逢甲店"></div><div class="field"><label>分店地址</label><input type="text" name="address[' + i + ']" placeholder="例如：台中市西屯區文華路100號"></div><div class="ui tiny red inverted icon button" id="removeFieldButton"><i class="remove icon"></i>刪除分店 #' + i + '</div></div>').insertBefore("div#ButtonList");
                 $('div#removeFieldButton').bind('click', function (e) {
 //                    console.log($(this).parent('div'));
                     $(this).parent('div').remove();
