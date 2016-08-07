@@ -50,10 +50,12 @@
                     <td class="one wide center aligned">
                         <a href="{{ route('position.edit', $shop) }}"><nobr>
                             @if(count($shop->positions))
-                                <i class="large green marker icon popup" data-content="點擊編輯位置資訊"></i>
-                                @if(count($shop->positions) > 1)
-                                    × {{ count($shop->positions) }}
-                                @endif
+                                <i class="large green icons popup" data-content="點擊編輯位置資訊">
+                                    <i class="green marker icon"></i>
+                                    @if(count($shop->positions) > 1)
+                                    <i class="corner icon"><div class="ui tiny circular label">{{ count($shop->positions) }}</div></i>
+                                    @endif
+                                </i>
                             @else
                                 <i class="large red remove icon popup" data-content="這個商家找不到任何位置資訊！（點擊編輯位置資訊）"></i>
                             @endif
