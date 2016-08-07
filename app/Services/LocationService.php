@@ -6,7 +6,7 @@ class LocationService
 {
     /**
      * @param string $address
-     * @return array|null
+     * @return array
      * @throws \HttpRequestException
      */
     public static function getLocation($address)
@@ -15,7 +15,7 @@ class LocationService
             throw new \HttpRequestException('Google API Key Not Found!! Make sure that you have set KEY in your .env file.');
         }
         // set url
-        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . trim($address) . '&key=' . env('GOOGLE_API_SERVER_KEY');
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&key=' . env('GOOGLE_API_BROWSER_KEY');
 
         // get the json response
         $ch = curl_init();
@@ -26,6 +26,8 @@ class LocationService
 
         // decode the json
         $resp = json_decode($resp_json, true);
+
+        dd($resp);
 
         // check response
         if ($resp['status'] == 'OK') {
@@ -38,5 +40,6 @@ class LocationService
                 return $location;
             }
         }
+        return [];
     }
 }

@@ -45,12 +45,12 @@ class ShopController extends Controller
         ]);
 
         $shop = Shop::create([
-            'name' => $request->get('name'),
+            'name'        => $request->get('name'),
             'description' => $request->get('description'),
-            'url' => $request->get('url'),
-            'tel' => $request->get('tel'),
-            'open_at' => Carbon::createFromFormat('H:i', $request->get('open_at')),
-            'close_at' => Carbon::createFromFormat('H:i', $request->get('close_at')),
+            'url'         => $request->get('url'),
+            'tel'         => $request->get('tel'),
+            'open_at'     => Carbon::createFromFormat('H:i', $request->get('open_at')),
+            'close_at'    => Carbon::createFromFormat('H:i', $request->get('close_at')),
         ]);
 
         return redirect()->route('shop.index')->with('global', '商店已建立');
@@ -92,12 +92,12 @@ class ShopController extends Controller
         ]);
 
         $shop->update([
-            'name' => $request->get('name'),
+            'name'        => $request->get('name'),
             'description' => $request->get('description'),
-            'url' => $request->get('url'),
-            'tel' => $request->get('tel'),
-            'open_at' => Carbon::createFromFormat('H:i', $request->get('open_at')),
-            'close_at' => Carbon::createFromFormat('H:i', $request->get('close_at')),
+            'url'         => $request->get('url'),
+            'tel'         => $request->get('tel'),
+            'open_at'     => Carbon::createFromFormat('H:i', $request->get('open_at')),
+            'close_at'    => Carbon::createFromFormat('H:i', $request->get('close_at')),
         ]);
 
         return redirect()->route('shop.index')->with('global', '商店已更新');
@@ -136,22 +136,38 @@ class ShopController extends Controller
      */
     public function updatePosition(Request $request, Shop $shop)
     {
+        // Error Collection
+        $errorCounter = 0;
+        $errorPosition = "";
+
         // Delete all position belongsTo $shop
         Position::where('shop_id', $shop->id)->delete();
 
         // Add all position to $shop
         $keys = array_keys($request->get('address'));
         foreach ($keys as $key) {
-            $location = LocationService::getLocation($request->get('address')[$key]);
-            Position::create([
-                'shop_id' => $shop->id,
-                'description' => $request->get('description')[$key],
-                'address' => $request->get('address')[$key],
-                'longitude' => $location[0],
-                'latitude' => $location[1],
-            ]);
+            // Check address is not null
+            if ($request->get('address')[$key]) {
+                $location = LocationService::getLocation($request->get('address')[$key]);
+                // Check get location
+                if (count($location)) {
+                    Position::create([
+                        'shop_id'     => $shop->id,
+                        'description' => $request->get('description')[$key],
+                        'address'     => $request->get('address')[$key],
+                        'longitude'   => $location[0],
+                        'latitude'    => $location[1],
+                    ]);
+                } else {
+                    $errorCounter++;
+                    $errorPosition = $errorPosition . $request->get('description') . '<br/>';
+                }
+            }
         }
-
-        return redirect()->route('shop.show', $shop)->with('global', '商店位置已更新');
+        if ($errorCounter > 0) {
+            return redirect()->route('shop.show', $shop)->with('warning', '以下商店位置更新失敗，請稍後再試<br/>' . $errorPosition);
+        } else {
+            return redirect()->route('shop.show', $shop)->with('global', '商店位置已更新');
+        }
     }
 }

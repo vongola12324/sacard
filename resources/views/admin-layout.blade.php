@@ -41,12 +41,12 @@
             $('.ui.dropdown').each(function () {
                 $(this).dropdown();
             });
-            {{-- AlertifyJS --}}
-//                    alertify.defaults = {
-//                notifier: {
-//                    position: 'top-right'
-//                }
-//            };
+            {{--//AlertifyJS--}}
+            {{--alertify.defaults = {--}}
+                {{--notifier: {--}}
+                    {{--position: 'top-right'--}}
+                {{--}--}}
+            {{--};--}}
             {{--@if(Session::has('global'))--}}
                 {{--alertify.success('{{ Session::get('global') }}');--}}
             {{--@endif--}}
