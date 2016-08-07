@@ -53,9 +53,7 @@
             @endforeach
         </tbody>
     </table>
-    <div>
-        {!! $users->appends(Request::except(['page']))->render() !!}
-    </div>
+    @include('pagination.pagination', ['models' => $users])
 @endsection
 
 @section('admin-js')
