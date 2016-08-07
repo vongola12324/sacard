@@ -39,7 +39,7 @@ class LaravelMenu
                     );
                 }
                 //管理員
-                if (Entrust::can('menu.view')) {
+                if (Entrust::can('menu.view') and auth()->user()->isConfirmed) {
                     /** @var \Lavary\Menu\Builder $adminMenu */
                     $adminMenu = $menu->add('管理選單', 'javascript:void(0)');
 
