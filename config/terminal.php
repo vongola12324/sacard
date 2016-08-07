@@ -4,7 +4,7 @@ return [
     'enabled'    => true,
     'whitelists' => [],
     'router'     => [
-        'prefix'     => 'terminal',
-        'as'         => 'terminal.',
+        'prefix' => 'terminal',
+        'as'     => 'terminal.',
     ],
 ];

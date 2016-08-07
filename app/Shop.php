@@ -35,7 +35,7 @@ class Shop extends Model
 
     /* @var array $dates 自動轉換為Carbon的屬性 */
     protected $dates = ['open_at', 'close_at'];
-    
+
     /** @var int $perPage 分頁時的每頁數量 */
     protected $perPage = 20;
 

@@ -1,22 +1,22 @@
 <?php
 
 return [
-    'purifier'    => [
-        'enabled'    => true,
-        'settings'    => [
-            'parsedown'    => [
-                'Attr.EnableID'                => true,
+    'purifier' => [
+        'enabled'  => true,
+        'settings' => [
+            'parsedown' => [
+                'Attr.EnableID' => true,
 
-                'AutoFormat.RemoveEmpty'    => true,
+                'AutoFormat.RemoveEmpty' => true,
 
-                'HTML.Allowed'                => '*[class],*[id],h1,h2,h3,h4,h5,h6,div,b,strong,i,em,a[href|title],ul,ol,li,p,br,span,img[width|height|alt|src],code,pre,hr,sup,table,thead,tbody,tr,th,td',
-                'HTML.Nofollow'                => true,
-                'HTML.TargetBlank'            => true,
+                'HTML.Allowed'     => '*[class],*[id],h1,h2,h3,h4,h5,h6,div,b,strong,i,em,a[href|title],ul,ol,li,p,br,span,img[width|height|alt|src],code,pre,hr,sup,table,thead,tbody,tr,th,td',
+                'HTML.Nofollow'    => true,
+                'HTML.TargetBlank' => true,
 
-                'Output.SortAttr'            => true,
+                'Output.SortAttr' => true,
 
                 // List by https://linkdecrypter.com/
-                'URI.HostBlacklist'            => [
+                'URI.HostBlacklist' => [
                     '00.uz', '0rz.tw', '0url.in', '10001mb.com', '123link.it', '123url.org',
                     '1cl.in', '1ke.com.ar', '1kh.de', '1short.us', '1tiny.net', '1tk.us',
                     '1to4.me', '1tool.biz', '1url.com', '1y.lt', '1zh.us', '2.gp',

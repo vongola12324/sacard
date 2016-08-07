@@ -62,7 +62,7 @@ class ShopsTableSeeder extends Seeder
 
         // Mass it
         for ($i = 0; $i < count($this->locations); $i++) {
-            $rand = random_int(0, count($this->locations)-1);
+            $rand = random_int(0, count($this->locations) - 1);
             $temp = $this->locations[$i];
             $this->locations[$i] = $this->locations[$rand];
             $this->locations[$rand] = $temp;
@@ -78,6 +78,6 @@ class ShopsTableSeeder extends Seeder
         $this->index++;
 
         // Return location (must -1 cause for logic)
-        return $this->locations[$this->index-1];
+        return $this->locations[$this->index - 1];
     }
 }
