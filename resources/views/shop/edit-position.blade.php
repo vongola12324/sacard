@@ -46,6 +46,9 @@
             <a href="{{ route('shop.index') }}" class="ui blue inverted icon button">
                 <i class="icon arrow left"></i> 返回列表
             </a>
+            <a href="{{ route('shop.show', $shop) }}" class="ui blue inverted icon button">
+                <i class="icon arrow left"></i> 返回商店資料
+            </a>
             {!! SemanticForm::submit('<i class="checkmark icon"></i> 確認')->addClass('ui icon submit red inverted button') !!}
         </div>
     </div>
