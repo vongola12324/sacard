@@ -160,7 +160,7 @@ class ShopController extends Controller
                     ]);
                 } else {
                     $errorCounter++;
-                    $errorPosition = $errorPosition . $request->get('description') . '<br/>';
+                    $errorPosition = $errorPosition . $request->get('description')[$key] . '<br/>';
                 }
             }
         }
