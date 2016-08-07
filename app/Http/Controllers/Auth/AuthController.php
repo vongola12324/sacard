@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Role;
 use App\Services\MailService;
 use Carbon\Carbon;
 use App\User;
@@ -102,16 +103,21 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        //呼叫原始註冊方法
+        // 呼叫原始註冊方法
         $result = $this->originalRegister($request);
         /** @var User $user */
         $user = auth()->user();
         $this->generateConfirmCodeAndSendConfirmMail($user);
-        //紀錄註冊時間與IP
+        // 紀錄註冊時間與IP
         $user->register_at = Carbon::now();
         $user->register_ip = $request->ip();
         $user->save();
-        //回傳結果
+        // 賦予第一位註冊的人管理員權限
+        if (User::count() == 1) {
+            $admin = Role::where('name', '=', 'Admin')->first();
+            $user->attachRole($admin);
+        }
+        // 回傳結果
         return $result->with('global', '註冊完成，請至信箱收取驗證信件。');
     }
 
