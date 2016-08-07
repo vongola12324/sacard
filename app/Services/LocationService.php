@@ -20,14 +20,12 @@ class LocationService
         // get the json response
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_URL, $url);
         $resp_json = curl_exec($ch);
-//        $resp_json = file_get_contents($url);
 
         // decode the json
         $resp = json_decode($resp_json, true);
-
-        dd($resp);
 
         // check response
         if ($resp['status'] == 'OK') {
