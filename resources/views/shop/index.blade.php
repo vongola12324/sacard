@@ -48,11 +48,16 @@
                         {{ $shop->open_at->format('H:i') }} - {{ $shop->close_at->format('H:i') }}
                     </td>
                     <td class="one wide center aligned">
-                        @if(count($shop->positions))
-                            <i class="large green marker icon"></i>
-                        @else
-                            <i class="large red remove icon popup" data-content="這個商家找不到任何位置資訊！"></i>
-                        @endif
+                        <a href="{{ route('position.edit', $shop) }}"><nobr>
+                            @if(count($shop->positions))
+                                <i class="large green marker icon popup" data-content="點擊編輯位置資訊"></i>
+                                @if(count($shop->positions) > 1)
+                                    × {{ count($shop->positions) }}
+                                @endif
+                            @else
+                                <i class="large red remove icon popup" data-content="這個商家找不到任何位置資訊！（點擊編輯位置資訊）"></i>
+                            @endif
+                        </nobr></a>
                     </td>
                     <td class="three wide">
                         <a href="{{ route('shop.show', $shop) }}" class="ui icon blue inverted button">
