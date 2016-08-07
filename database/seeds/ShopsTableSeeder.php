@@ -28,9 +28,9 @@ class ShopsTableSeeder extends Seeder
         for ($i = 0; $i < 20; $i++) {
             $shop = Shop::create([
                 'name'        => $faker->company,
-                'description' => random_int(0, 1) == 1 ? $faker->catchPhrase : null,
-                'url'         => random_int(0, 1) == 1 ? $faker->url : null,
-                'tel'         => random_int(0, 1) == 1 ? $faker->phoneNumber : null,
+                'description' => $faker->optional()->catchPhrase,
+                'url'         => $faker->optional()->url,
+                'tel'         => $faker->optional()->phoneNumber,
                 'open_at'     => Carbon::createFromFormat('H:i', $faker->time('H:i')),
                 'close_at'    => Carbon::createFromFormat('H:i', $faker->time('H:i')),
             ]);
