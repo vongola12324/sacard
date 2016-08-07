@@ -41,18 +41,19 @@
             $('.ui.dropdown').each(function () {
                 $(this).dropdown();
             });
-            {{--//AlertifyJS--}}
-            {{--alertify.defaults = {--}}
-                {{--notifier: {--}}
-                    {{--position: 'top-right'--}}
-                {{--}--}}
-            {{--};--}}
-            {{--@if(Session::has('global'))--}}
-                {{--alertify.success('{{ Session::get('global') }}');--}}
-            {{--@endif--}}
-            {{--@if(Session::has('warning'))--}}
-                {{--alertify.error('{{ Session::get('warning') }}');--}}
-            {{--@endif--}}
+
+            //AlertifyJS
+            alertify.defaults = {
+                notifier: {
+                    position: 'top-right'
+                }
+            };
+            @if(Session::has('global'))
+                alertify.notify('{{ Session::get('global') }}', 'success', 5);
+            @endif
+            @if(Session::has('warning'))
+                alertify.notify('{{ Session::get('warning') }}', 'warning', 5);
+            @endif
         });
     </script>
     @yield('admin-js')

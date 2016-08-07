@@ -10,17 +10,8 @@
 
         {{-- CSS --}}
         {!! Html::style('semantic/semantic.min.css') !!}
+        {!! Html::style('//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/semantic.min.css') !!}
         <style>
-            {{--body.flex.body {--}}
-                {{--display: flex;--}}
-                {{--min-height: 100vh;--}}
-                {{--flex-direction: column;--}}
-            {{--}--}}
-
-            {{--div.flex.content {--}}
-                {{--flex: 1;--}}
-            {{--}--}}
-
             div#footer {
                 margin: 0;
                 width: 100%;
@@ -50,6 +41,7 @@
         {{-- Javascript --}}
         {!! Html::script('//code.jquery.com/jquery-3.1.0.min.js') !!}
         {!! Html::script('semantic/semantic.js') !!}
+        {!! Html::script('//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js') !!}
         @yield('js')
 
     </body>
