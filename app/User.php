@@ -53,7 +53,7 @@ class User extends Authenticatable
     protected $dates = ['confirm_at', 'register_at', 'last_login_at'];
 
     /** @var int $perPage 分頁時的每頁數量 */
-    protected $perPage = 50;
+    protected $perPage = 20;
 
     /**
      * 帳號是否完成驗證
