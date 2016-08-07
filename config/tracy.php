@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'enabled'      => env('APP_DEBUG', true),
-    'showBar'      => true,
-    'accepts'      => [
+    'enabled' => env('APP_DEBUG', true),
+    'showBar' => true,
+    'accepts' => [
         'text/html',
     ],
     'editor'       => 'subl://open?url=file://%file&line=%line',

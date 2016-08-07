@@ -17,7 +17,6 @@ class ShopController extends Controller
      */
     public function index()
     {
-
         $shops = Shop::with('positions')->paginate();
 
         return view('shop.index', compact('shops'));
@@ -139,7 +138,7 @@ class ShopController extends Controller
     {
         // Error Collection
         $errorCounter = 0;
-        $errorPosition = "";
+        $errorPosition = '';
 
         // Delete all position belongsTo $shop
         Position::where('shop_id', $shop->id)->delete();

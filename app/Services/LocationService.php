@@ -38,6 +38,7 @@ class LocationService
                 return $location;
             }
         }
+
         return [];
     }
 }

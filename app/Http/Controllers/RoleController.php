@@ -53,7 +53,7 @@ class RoleController extends Controller
             'display_name' => $request->get('display_name'),
             'description'  => $request->get('description'),
             'color'        => $request->get('color'),
-            'protection'      => false,
+            'protection'   => false,
         ]);
         $role->perms()->sync($request->get('permissions') ?: []);
 
