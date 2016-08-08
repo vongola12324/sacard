@@ -34,7 +34,12 @@
         <div class="ui inverted center aligned segment" id="footer">
             <div class="ui container center aligned">
                 <p>
-                    Copyright (c) 2016 Feng Chia University Student Association, All rights reserved.@if(!auth()->check()) [{{ link_to_route('auth.login', 'Staff Login') }}]@endif
+                    Copyright (c) 2016 Feng Chia University Student Association, All rights reserved.
+                    @if(!auth()->check())
+                        [{{ link_to_route('auth.login', 'Staff Login') }}]
+                    @else
+                        [{{ link_to_route('shop.index', 'Shop Manage') }}]
+                    @endif
                 </p>
             </div>
         </div>
