@@ -43,7 +43,6 @@
             });
 
             @foreach($positions as $position)
-                @php($shop = $position->shop)
                 //Create a marker and set its position.
                 new google.maps.Marker({
                     map: map,
@@ -52,20 +51,20 @@
                     new google.maps.InfoWindow({
                         content: '<div id="content">'+
                         '<h1 id="firstHeading" class="firstHeading">'+
-                        '{{ $shop->name }}({{ $position->description }})'+
+                        '{{ $position->shop->name }}({{ $position->description }})'+
                         '</h1>'+
                         '<div id="bodyContent">'+
-                        @if($shop->description)
-                        '<p>{{ $shop->description }}</p>'+
+                        @if($position->shop->description)
+                        '<p>{{ $position->shop->description }}</p>'+
                         @endif
-                        @if($shop->open_at && $shop->close_at)
-                            '<p>營業時間：{{ $shop->open_at->format('H:i') }}-{{ $shop->close_at->format('H:i') }}</p>'+
+                        @if($position->shop->open_at && $position->shop->close_at)
+                            '<p>營業時間：{{ $position->shop->open_at->format('H:i') }}-{{ $position->shop->close_at->format('H:i') }}</p>'+
                         @endif
-                        @if($shop->tel)
-                            '<p>電話：{{ $shop->tel }}</p>'+
+                        @if($position->shop->tel)
+                            '<p>電話：{{ $position->shop->tel }}</p>'+
                         @endif
-                        @if($shop->url)
-                            '<p>詳細請上<a href="{{ $shop->url }}" target="_blank">商店網站/粉專</a>查詢</p>'+
+                        @if($position->shop->url)
+                            '<p>詳細請上<a href="{{ $position->shop->url }}" target="_blank">商店網站/粉專</a>查詢</p>'+
                         @endif
                         '</div>'+
                         '</div>'

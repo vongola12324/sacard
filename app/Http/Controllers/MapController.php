@@ -9,7 +9,7 @@ class MapController extends Controller
 {
     public function getIndex()
     {
-        $positions = Position::all();
+        $positions = Position::with('shop')->get();
         return view('map', compact('positions'));
     }
 }
