@@ -136,6 +136,21 @@ class ShopController extends Controller
      */
     public function updatePosition(Request $request, Shop $shop)
     {
+        // Rule
+        $rule = [
+            'description' => 'array',
+            'address'     => 'array',
+        ];
+        for ($i = 0; $i < count($request->get('address')); $i++) {
+            $rule = array_merge($rule, [
+                'description.' . $i => 'required',
+                'address.' . $i     => 'required',
+            ]);
+        }
+
+        // Validation
+        $this->validate($request, $rule);
+
         // Error Collection
         $errorCounter = 0;
         $errorPosition = '';
@@ -152,51 +167,23 @@ class ShopController extends Controller
         if (count($request->get('address'))) {
             $keys = array_keys($request->get('address'));
             foreach ($keys as $key) {
-                // Check is update or create
-                if ($key != "" && $key != null && $key < count($request->get('address'))) {
-                    if ($request->get('posID')[$key]) {
-                        // Update Position
-                        $position = Position::where('id', $request->get('posId')[$key]);
-                        if ($request->get('address')[$key]) {
-                            $location = LocationService::getLocation($request->get('address')[$key]);
-                            if (count($location)) {
-                                $position->update([
-                                    'shop_id'     => $shop->id,
-                                    'description' => $request->get('description')[$key],
-                                    'address'     => $request->get('address')[$key],
-                                    'longitude'   => $location[0],
-                                    'latitude'    => $location[1],
-                                ]);
-                            } else {
-                                $errorCounter++;
-                                $errorPosition = $errorPosition . $request->get('description')[$key] . "<br/>";
-                            }
-                        }
-                    } else {
-                        // Create a new position
-                        // Check address is not null
-                        if ($request->get('address')[$key]) {
-                            $location = LocationService::getLocation($request->get('address')[$key]);
-                            // Check get location
-                            if (count($location)) {
-                                Position::create([
-                                    'shop_id'     => $shop->id,
-                                    'description' => $request->get('description')[$key],
-                                    'address'     => $request->get('address')[$key],
-                                    'longitude'   => $location[0],
-                                    'latitude'    => $location[1],
-                                ]);
-                            } else {
-                                $errorCounter++;
-                                $errorPosition = $errorPosition . $request->get('description')[$key] . "<br/>";
-                            }
-                        }
-                    }
-
+                $location = LocationService::getLocation($request->get('address')[$key]);
+                if (count($location)) {
+                    Position::updateOrCreate([
+                        'id' => isset($request->get('posID')[$key]) ? $request->get('posID')[$key] : -1,
+                    ], [
+                        'shop_id'     => $shop->id,
+                        'description' => $request->get('description')[$key],
+                        'address'     => $request->get('address')[$key],
+                        'longitude'   => $location[0],
+                        'latitude'    => $location[1],
+                    ]);
+                } else {
+                    $errorCounter++;
+                    $errorPosition = $errorPosition . $request->get('description')[$key] . "<br/>";
                 }
             }
         }
-
 
         if ($errorCounter > 0) {
             return redirect()->route('shop.show', $shop)->with('warning', "以下商店位置更新失敗，請稍後再試<br/>" . $errorPosition);
