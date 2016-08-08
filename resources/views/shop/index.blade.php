@@ -83,7 +83,9 @@
             @endforeach
         </tbody>
     </table>
-    @include('pagination.pagination', ['models' => $shops])
+    <div class="ui center aligned attached segment" style="border: none">
+        {!! (new Landish\Pagination\SemanticUI($shops))->render() !!}
+    </div>
 @endsection
 
 @section('admin-js')
