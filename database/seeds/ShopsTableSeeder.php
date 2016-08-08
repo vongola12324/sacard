@@ -25,7 +25,7 @@ class ShopsTableSeeder extends Seeder
         $this->initLocation();
 
         // Create Shop
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             $shop = Shop::create([
                 'name'        => $faker->company,
                 'description' => $faker->optional()->catchPhrase,
